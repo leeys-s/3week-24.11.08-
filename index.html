@@ -26,6 +26,7 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
     />
+
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/main.css" />
@@ -40,6 +41,7 @@
     <script src="./js/crew.js"></script>
     <script src="./js/cards.js"></script>
     <script src="./js/footer.js"></script>
+    <script src="./js/banner.js"></script>
     <script src="./js/slide-main.js"></script>
     <script src="./js/slide-logo.js"></script>
     <script src="./js/slide-card.js"></script>
@@ -135,8 +137,8 @@
           <!-- Swipe 복붙 끝 지점. -->
           <!-- 교체 가능 -->
           <div class="swiper visual-slide">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
+            <div class="swiper-wrapper" id="main-api">
+              <!-- <div class="swiper-slide">
                 <a href="#">
                   <img src="./images/b1.png" alt="배너이미지" />
                 </a>
@@ -155,7 +157,7 @@
                 <a href="#">
                   <img src="./images/b1.png" alt="배너이미지" />
                 </a>
-              </div>
+              </div> -->
             </div>
             <!-- 11월 8일(금) 작업 126~ -->
             <div class="swiper-pagination"></div>
@@ -230,121 +232,124 @@
           </div>
           <!-- 배너 -->
           <div class="banner">
-            <a href="#">
-              <img src="./images/1pc.png" alt="배너" />
-            </a>
-          </div>
-          <!-- 카테고리 목록 -->
-          <div class="list-cate-wrap">
-            <h4 class="list-title">CREW 🔥</h4>
-            <div class="list-thum-wrap">
-              <!--@Start 게시글 목록 -->
-              <div class="list">
-                <a href="#" class="thum">
-                  <div class="thum-img">
-                    <img src="./images/c1.jpg" alt="뉴스" />
-                  </div>
-                  <div class="thum-cate">
-                    <img src="./images/icon/ic_llms.png" alt="llms" />
-                    <span>LLMs</span>
-                  </div>
-                  <h5 class="thum-title">
-                    Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention
-                    공개
-                  </h5>
-                  <span class="thum-date">2024.10.29</span>
-                </a>
-                <a href="#" class="thum">
-                  <div class="thum-img">
-                    <img src="./images/c1.jpg" alt="뉴스" />
-                  </div>
-                  <div class="thum-cate">
-                    <img src="./images/icon/ic_llms.png" alt="llms" />
-                    <span>LLMs</span>
-                  </div>
-                  <h5 class="thum-title">
-                    Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention
-                    공개
-                  </h5>
-                  <span class="thum-date">2024.10.29</span>
-                </a>
-                <a href="#" class="thum">
-                  <div class="thum-img">
-                    <img src="./images/c1.jpg" alt="뉴스" />
-                  </div>
-                  <div class="thum-cate">
-                    <img src="./images/icon/ic_llms.png" alt="llms" />
-                    <span>LLMs</span>
-                  </div>
-                  <h5 class="thum-title">
-                    Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention
-                    공개
-                  </h5>
-                  <span class="thum-date">2024.10.29</span>
-                </a>
+            <div class="swiper banner-slide">
+              <div class="swiper-wrapper" id="banner-api">
+                <!-- <div class="swiper-slide">
+                  <a href="#">
+                    <img src="./images/1pc.png" alt="배너" />
+                  </a>
+                </div> -->
               </div>
-              <!--@End  -->
-              <!--@Start 게시글 목록 -->
-              <div class="list">
-                <a href="#" class="thum">
-                  <div class="thum-img">
-                    <img src="./images/c1.jpg" alt="뉴스" />
-                  </div>
-                  <div class="thum-cate">
-                    <img src="./images/icon/ic_llms.png" alt="llms" />
-                    <span>LLMs</span>
-                  </div>
-                  <h5 class="thum-title">
-                    Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention
-                    공개
-                  </h5>
-                  <span class="thum-date">2024.10.29</span>
-                </a>
-                <a href="#" class="thum">
-                  <div class="thum-img">
-                    <img src="./images/c1.jpg" alt="뉴스" />
-                  </div>
-                  <div class="thum-cate">
-                    <img src="./images/icon/ic_llms.png" alt="llms" />
-                    <span>LLMs</span>
-                  </div>
-                  <h5 class="thum-title">
-                    Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention
-                    공개
-                  </h5>
-                  <span class="thum-date">2024.10.29</span>
-                </a>
-                <a href="#" class="thum">
-                  <div class="thum-img">
-                    <img src="./images/c1.jpg" alt="뉴스" />
-                  </div>
-                  <div class="thum-cate">
-                    <img src="./images/icon/ic_llms.png" alt="llms" />
-                    <span>LLMs</span>
-                  </div>
-                  <h5 class="thum-title">
-                    Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention
-                    공개
-                  </h5>
-                  <span class="thum-date">2024.10.29</span>
-                </a>
-              </div>
-              <!--@End  -->
-            </div>
-            <!-- 더보기 버튼 -->
-            <div class="list-bt-wrap">
-              <button id="bt-more" class="bt">더보기</button>
             </div>
           </div>
         </div>
-        <!-- 오른쪽 영역 -->
-        <div class="right">
-          <h4 class="list-title">폴더 📁</h4>
-          <!-- 카트 전체 목록 -->
-          <div class="list-card" id="cards-api">
-            <!-- 카드 API 연동 -->
-            <!--@Start card -->
-            <!-- <a href="#" class="card-wrap">
+
+        <!-- 카테고리 목록 -->
+        <div class="list-cate-wrap">
+          <h4 class="list-title">CREW 🔥</h4>
+          <!-- 11월 11일 작업 id crew.js 활용용 id="crew-api" -->
+          <div class="list-thum-wrap" id="crew-api">
+            <!--@Start 게시글 목록 -->
+            <div class="list">
+              <a href="#" class="thum">
+                <div class="thum-img">
+                  <img src="./images/c1.jpg" alt="뉴스" />
+                </div>
+                <div class="thum-cate">
+                  <img src="./images/icon/ic_llms.png" alt="llms" />
+                  <span>LLMs</span>
+                </div>
+                <h5 class="thum-title">
+                  Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention 공개
+                </h5>
+                <span class="thum-date">2024.10.29</span>
+              </a>
+              <a href="#" class="thum">
+                <div class="thum-img">
+                  <img src="./images/c1.jpg" alt="뉴스" />
+                </div>
+                <div class="thum-cate">
+                  <img src="./images/icon/ic_llms.png" alt="llms" />
+                  <span>LLMs</span>
+                </div>
+                <h5 class="thum-title">
+                  Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention 공개
+                </h5>
+                <span class="thum-date">2024.10.29</span>
+              </a>
+              <a href="#" class="thum">
+                <div class="thum-img">
+                  <img src="./images/c1.jpg" alt="뉴스" />
+                </div>
+                <div class="thum-cate">
+                  <img src="./images/icon/ic_llms.png" alt="llms" />
+                  <span>LLMs</span>
+                </div>
+                <h5 class="thum-title">
+                  Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention 공개
+                </h5>
+                <span class="thum-date">2024.10.29</span>
+              </a>
+            </div>
+            <!--@End  -->
+            <!--@Start 게시글 목록 -->
+            <div class="list">
+              <a href="#" class="thum">
+                <div class="thum-img">
+                  <img src="./images/c1.jpg" alt="뉴스" />
+                </div>
+                <div class="thum-cate">
+                  <img src="./images/icon/ic_llms.png" alt="llms" />
+                  <span>LLMs</span>
+                </div>
+                <h5 class="thum-title">
+                  Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention 공개
+                </h5>
+                <span class="thum-date">2024.10.29</span>
+              </a>
+              <a href="#" class="thum">
+                <div class="thum-img">
+                  <img src="./images/c1.jpg" alt="뉴스" />
+                </div>
+                <div class="thum-cate">
+                  <img src="./images/icon/ic_llms.png" alt="llms" />
+                  <span>LLMs</span>
+                </div>
+                <h5 class="thum-title">
+                  Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention 공개
+                </h5>
+                <span class="thum-date">2024.10.29</span>
+              </a>
+              <a href="#" class="thum">
+                <div class="thum-img">
+                  <img src="./images/c1.jpg" alt="뉴스" />
+                </div>
+                <div class="thum-cate">
+                  <img src="./images/icon/ic_llms.png" alt="llms" />
+                  <span>LLMs</span>
+                </div>
+                <h5 class="thum-title">
+                  Transformer 기반 AI 가속 프레임워크 ALiBi FlashAttention 공개
+                </h5>
+                <span class="thum-date">2024.10.29</span>
+              </a>
+            </div>
+            <!--@End  -->
+          </div>
+          <!-- 더보기 버튼 -->
+          <div class="list-bt-wrap">
+            <button id="bt-more" class="bt">더보기</button>
+          </div>
+        </div>
+      </div>
+      <!-- 오른쪽 영역 -->
+      <div class="right">
+        <h4 class="list-title">폴더 📁</h4>
+        <!-- 카트 전체 목록 -->
+        <div class="list-card" id="cards-api">
+          <!-- 카드 API 연동 -->
+          <!--@Start card -->
+          <!-- <a href="#" class="card-wrap">
               <div class="card-img">
                 <img src="./images/p1.png" alt="card" />
               </div>
@@ -354,9 +359,9 @@
                 <span class="card-count">5</span>
               </div>
             </a>-->
-            <!--@End card -->
-            <!--@Start card -->
-            <!-- <a href="#" class="card-wrap">
+          <!--@End card -->
+          <!--@Start card -->
+          <!-- <a href="#" class="card-wrap">
               <div class="card-img">
                 <img src="./images/p1.png" alt="card" />
               </div>
@@ -366,9 +371,9 @@
                 <span class="card-count">5</span>
               </div>
             </a>-->
-            <!--@End card -->
-            <!--@Start card -->
-            <!-- <a href="#" class="card-wrap">
+          <!--@End card -->
+          <!--@Start card -->
+          <!-- <a href="#" class="card-wrap">
               <div class="card-img">
                 <img src="./images/p1.png" alt="card" />
               </div>
@@ -378,9 +383,9 @@
                 <span class="card-count">5</span>
               </div>
             </a>-->
-            <!--@End card -->
-            <!--@Start card -->
-            <!-- <a href="#" class="card-wrap">
+          <!--@End card -->
+          <!--@Start card -->
+          <!-- <a href="#" class="card-wrap">
               <div class="card-img">
                 <img src="./images/p1.png" alt="card" />
               </div>
@@ -390,9 +395,9 @@
                 <span class="card-count">5</span>
               </div>
             </a>-->
-            <!--@End card -->
-            <!--@Start card -->
-            <!-- <a href="#" class="card-wrap">
+          <!--@End card -->
+          <!--@Start card -->
+          <!-- <a href="#" class="card-wrap">
               <div class="card-img">
                 <img src="./images/p1.png" alt="card" />
               </div>
@@ -402,12 +407,11 @@
                 <span class="card-count">5</span>
               </div>
             </a> -->
-            <!--@End card -->
-          </div>
-          <!-- 카드 리스트 버튼추가 11월 5일 -->
-          <div class="list-card-bt-wrap">
-            <button id="bt-more-card" class="bt">전체보기</button>
-          </div>
+          <!--@End card -->
+        </div>
+        <!-- 카드 리스트 버튼추가 11월 5일 -->
+        <div class="list-card-bt-wrap">
+          <button id="bt-more-card" class="bt">전체보기</button>
         </div>
       </div>
 

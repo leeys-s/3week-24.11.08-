@@ -23,8 +23,23 @@ window.addEventListener("load", function () {
       for (let i = 0; i < result.length; i++) {
         // 현재 실행되는 순서 0, 1, 2, 3
         // console.log("i", i);
+        const obj = result[i];
+        // ${[i]} 여러번 반복 되는 것을 저장해서 변수 저장하는것
+        // obj 로 대신 입력 하면 됨
         //   `빽틱으로 a 태그 만들어주는것
-        html_Atag_list += `<a href="#">${i}< /a>`;
+        html_Atag_list += `
+          <a href="${obj.link}" class="thum">
+              <div class="thum-img">
+                  <img src="./images/${obj.imgpath}" alt="${obj.category}" />
+              </div>
+              <div class="thum-cate">
+                  <img src="./images/icon/${obj.icon}" alt="${obj.category}" />
+                  <span>${obj.category}</span>
+              </div>
+              <h5 class="thum-title">${obj.title}</h5>
+              <span class="thum-date">${obj.day}</span>
+          </a>
+          `;
         // console.log(html_Atag_list);
 
         let tag = "";
@@ -39,7 +54,7 @@ window.addEventListener("load", function () {
           // 3개가 들어가서 조건이 충족되면
           // a태그 목록 내용만 지우고 다시 만들기출발
           html_Atag_list = "";
-        } else if (i <= result.length - 1) {
+        } else if (i == result.length - 1) {
           // 결과 값에서 - 1 해라.
           tag = `<div class="list">${html_Atag_list}</div>`;
           html_Atag_list = "";
@@ -49,9 +64,13 @@ window.addEventListener("load", function () {
         htmlCrew += tag;
       }
 
-      console.log(htmlCrew);
+      //console.log(htmlCrew);
 
       // html 출력하기
+      // html 240 <div class="list-thum-wrap" id="crew-api">
+      const crewTag = document.querySelector("#crew-api");
+      //console.log(crewTag);
+      crewTag.innerHTML = htmlCrew;
     })
     .catch(function () {});
 });

@@ -44,6 +44,5 @@ window.addEventListener("load", function () {
       // console.log(cardsTag);
       cardsTag.innerHTML = htmlCards;
     })
-
     .catch(function () {});
 });

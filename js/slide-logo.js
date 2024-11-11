@@ -25,7 +25,9 @@ window.addEventListener("load", function () {
       // 2. 반복해서 HTML 태그를 생성
       let logoHtml = "";
       for (let i = 0; i < 9; i++) {
-        const data = `<div class="swiper-slide"><img src="/images/etc/${result[i].imgUrl}" alt="${result[i].desc}"/></div>`;
+        const data = `<div class="swiper-slide">
+        <img src="/images/etc/${result[i].imgUrl}" alt="${result[i].desc}"/>
+        </div>`;
         logoHtml += data;
       }
 
