@@ -13,10 +13,9 @@
 }
 
 /* 11월 6일 active 추가 */
-
-/* .header-activi {
-  border-bottom: 1px solid #red !important;
-} */
+.header-active {
+  border-bottom: 1px solid red !important;
+}
 
 .header .layout {
   display: flex;

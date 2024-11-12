@@ -31,6 +31,23 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* 11월 12일(화) @start 오전 추가 작업  */
+/* main-slide.css 37 - 51 */
+.visual-slide a .title {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+/* 11월 12일(화) @end 오전 추가 작업 */
+
 /* 11월 8일(금) 슬라이드 작업 */
 /* .swiper-pagination-bullet-active html 통해서 찾아낸 것 */
 .visual-slide .swiper-pagination .swiper-pagination-bullet {
@@ -63,13 +80,32 @@
   overflow: hidden;
 }
 .card-slide a {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 .card-slide a img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
+
+/* 11월 12일(화) @start 오전 추가 작업*/
+/* main-slide.css 95-109 */
+.card-slide .title {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+/* 11월 12일(화) @end 오전 추가 작업*/
+
 .list-card-bt-wrap {
   display: flex;
   justify-content: center;

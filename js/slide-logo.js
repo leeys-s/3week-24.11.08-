@@ -12,7 +12,7 @@ window.addEventListener("load", function () {
   //   ----response: 리스판스
 
   //   this.fetch(LOGO_DATA_URL). then(성공했을때).catch(에러가 났을때);
-  this.fetch(LOGO_DATA_URL)
+  fetch(LOGO_DATA_URL)
     .then(function (response) {
       //   console.log(response);
       const result = response.json();
@@ -24,21 +24,21 @@ window.addEventListener("load", function () {
       // console.log(result);
       // 2. 반복해서 HTML 태그를 생성
       let logoHtml = "";
-      for (let i = 0; i < 9; i++) {
-        const data = `<div class="swiper-slide">
-        <img src="/images/etc/${result[i].imgUrl}" alt="${result[i].desc}"/>
-        </div>`;
+      for (let i = 0; i < result.length; i++) {
+        const data = `<div class="swiper-slide"><img src="/images/etc/${result[i].imgUrl}" alt="${result[i].desc}"/></div>`;
+
         logoHtml += data;
       }
 
       // console.log(logoHtml);
 
       // 3. 생성된 HTML을 원하는 곳에 배치 (11월11일 34~ HTML65line)
-      const headerlogoTag = document.querySelector(
+      const headerLogoTag = document.querySelector(
         ".header-logo-motion .swiper-wrapper"
       );
-      // console.logo(headerlogoTag);
-      headerlogoTag.imerHTML = logoHtml;
+      // console.log(headerLogoTag);
+      headerLogoTag.innerHTML = logoHtml;
+
       // 4. swiper 생성 및 실행
       // @start blog <> 블로그 변화 하는것 작업
       const headerLogo = new Swiper(".header-logo-motion", {
@@ -56,6 +56,19 @@ window.addEventListener("load", function () {
         // fadeEffect: {crossFade: true,}, 입력시 깔끔해짐.
         // @end blog <> 블로그 변화 하는것 작업
       });
+      // @start 11월 12일 추가 59 - 71
+      // 추가 1:  먼저 멈춘다.
+      headerLogo.autoplay.stop();
+      // 추가2 : 마우스 오버 되면 다시 플레이
+      headerLogoTag.addEventListener("mouseenter", function () {
+        headerLogo.autoplay.start();
+      });
+      // 추가 3: 마우스 아웃 되면 멈춤 및 첫 슬라이드로 이동
+      headerLogoTag.addEventListener("mouseleave", function () {
+        headerLogo.autoplay.stop();
+        headerLogo.slideToLoop(0); // 무조건 첫 슬라이드로 가라.
+      });
+      // @end 11월 12일 추가
     })
     .catch(function (error) {
       console.log(error);
@@ -67,7 +80,7 @@ window.addEventListener("load", function () {
   // { imgUrl : "경로", desc : "설명문"}
   // [ {}, {}, {}]
   //   const logoData = [{ imgUrl: "#", desc: "#", }, { imgUrl: "#", desc: "#", }, ];
-  //   const LogoData;
+  //   const logoData;
 
   // @end 11월11일 71-126 (113-128은 위에40번 으로 옮겨짐)
 
@@ -126,6 +139,5 @@ window.addEventListener("load", function () {
   //   },
   //   // fadeEffect: {crossFade: true,}, 입력시 깔끔해짐.
   //   // @end blog <> 블로그 변화 하는것 작업
-  // });
   // @end 11월11일 -126
 });
