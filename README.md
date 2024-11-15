@@ -333,7 +333,7 @@ const Person = {
   say: () => {
     console.log("안녕", this);
     console.log("안녕", this.username);
-    // 글로벌에 없으므로 username, age, korean 안 나와야 정상이다.
+    // 글로벌에 없으므로 this.username, age, korean 안 나와야 정상이다.
     console.log("안녕", this.age);
     console.log("안녕", this.korean);
   }, // 행동. 기능 (Method)
@@ -348,24 +348,30 @@ Person.say();
 ```
 
 - 일반 함수 안쪽에 화살표 함수를 중첩해서 사용시 this 는
-- `비동기 함수`에서의 화살표 함수의 `this` 는 `window`
+- `비동기 함수`에서의 `화살표 함수`의 `this` 는 `window`
+- `this로 변수를 참조하면 안된다.` 이유는 window를 참조하므로
+- 화살표에서는 this 쓰지말자.
 
 ```js
 //  시간이 오래 걸리는 작업을 가지고 테스트
-
 function Timer() {
+  let count = 0;
   // 타이머 함수를 이용해서 오래걸리도록 샘플
-  // 기본 웹브라우저에 내장 되어 있는 즉, 빌트인이 되어있는 함수
-  // setInterverval(함수, 간격);
-  setInterverval(() => {
-    console.log("안녕:", this);
+  // 기본 웹브라우저에 내장 되어 있는 즉, 빌트인 이 되어 있는 함수
+  // setInterval(함수, 간격);
+  setInterval(() => {
+    this.count++; // 오류 ...  undefined  + 1
+    console.log("안녕 : ", this);
+    console.log("안녕 : ", this.count); // NaN 이 계속 나와요.
   }, 1000);
 }
+
 Timer();
 ```
 
 - 클래스의 메서드 , 즉 클래스에 화살표 메서드를 사용시 this 는
   `window 말고 instance`를 가르킴
+- this는 클래스의 `복제본(instance)`을 가르킨다.
 
 ```js
 class Student {
@@ -375,8 +381,12 @@ class Student {
     console.log("학생 한 객체를 만들어요.");
   }
 
+  count = 1;
+
   say = () => {
     console.log("클래스로 만들어진 instance: ", this);
+
+    console.log("클래스로 만들어진 instance.count: ", this.count);
   };
   // this 는 class Student 가 표시된다.
 }
@@ -386,3 +396,128 @@ st.say();
 ```
 
 #### 3.4.3 일반함수 안쪽의 this 는 window 가 아닐 수 있다.
+
+- 글로벌 영역의 `function` 의 `this` 는 `window`
+
+```js
+function go() {
+  const age = 10;
+  console.log("화살표 this : ", this); // window
+  console.log("화살표 age : ", age); // 지역변수
+  console.log("화살표 this.age : ", this.age); // 전역변수 age undefined
+}
+
+go();
+```
+
+- `객체`라는 곳에 기능(함수) 즉, `메서드`에 만약 `function`로 `this` 를 쓴다면 `window 일까??` -`this`를 쓴다면 `자기자신을 가르킨다. 화살표와 다르다.`
+
+```js
+// 기본 데이터를 묶어서 {} 안에 모아서 관리 할 수 없을까?
+// Object 제 7의 데이터 종류
+const Person = {
+  userName: "홍길동", // 속성 (Property)
+  age: 20, // 속성 (Property)
+  korean: true, // 속성 (Property)
+  say: function () {
+    console.log("안녕", this);
+    console.log("안녕", this.userName);
+    console.log("안녕", this.age);
+    console.log("안녕", this.korean);
+  }, // 행동. 기능 (Method)
+  cry: function () {
+    console.log("ㅠㅠ", this);
+  }, // 행동, 기능(Method)
+};
+
+console.log(Person.userName);
+console.log(Person["userName"]);
+Person.say();
+```
+
+- `비동기 함수`에서의 `function`의 `this` 는 `window`
+- 누가 함수를 call 했는가가 중요해요.
+
+```js
+//  시간이 오래 걸리는 작업을 가지고 테스트
+function Timer() {
+  setInterval(function () {
+    // 함수를 실행하는 주인은 window 라서.
+    console.log("안녕 : ", this);
+  }, 1000);
+}
+
+Timer();
+```
+
+- 클래스의 메서드, 즉 클래스에 화살표 메서드를 사용시 this 는 `window 말고 instance`를 가르킴
+- this는 클래스의 `복제본(instance)`을 가르킨다.
+
+<!-- 11월 15일(금) 오후수업 -->
+
+## 4. 콜백함수(callback Function)
+
+- 함수(일반/화살표) 를 파라메터로 전달하는 것
+- 파라메터의 값으로 전달되는 함수를 말함.
+- 비동기 즉, 서버 연동(Request, Response) 후에 함수실행
+- 이벤트 기반 함수 실행(클릭했을때, Html이 완성 되었을 때) 후에 함수실행
+
+### 4.1 아래 모두 동일합니다.
+
+-가능하면 마지막 방식으로 한다.
+
+```js
+//  @start 콜백함수case#1
+function run(함수) {
+  함수();
+}
+
+const say = () => {
+  console.log("say");
+};
+const cry = () => {
+  console.log("ㅠㅠ");
+};
+
+run(say);
+run(눈물);
+
+window.addEventListener("", function () {});
+// @end콜백함수 case#1
+
+// @start 콜백함수case#2
+function run(함수) {
+  함수();
+}
+
+run(function () {
+  console.log("say");
+});
+
+run(function () {
+  console.log("ㅠㅠ");
+});
+
+window.addEventListener("", function () {});
+
+// @end 콜백함수case#2
+
+// @start 콜백함수case#3
+
+function run(함수) {
+  함수();
+}
+
+run(() => {
+  console.log("say");
+});
+
+run(() => {
+  console.log("ㅠㅠ");
+});
+
+window.addEventListener("", function () {});
+// @end 콜백함수case#3
+```
+
+<!-- 11월 15일 오후수업 콜백함수 끝 -->
